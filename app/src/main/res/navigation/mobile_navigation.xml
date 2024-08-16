@@ -37,4 +37,9 @@
         android:name="com.example.myapplication.ui.menu.MenuFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_menu" />
+    <fragment
+        android:id="@+id/profile_menu"
+        android:name="com.example.myapplication.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

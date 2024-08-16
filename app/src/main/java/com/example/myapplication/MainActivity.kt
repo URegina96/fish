@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -19,16 +20,22 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(findViewById(R.id.top_toolbar)) // Устанавливаем ваш Toolbar как ActionBar
+        setSupportActionBar(findViewById(R.id.top_toolbar))
 
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
         navView.setupWithNavController(navController)
 
-        // Убираем заголовок
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        // Либо можно установить заголовок вручную
-        // supportActionBar?.title = ""
     }
+
+    fun onProfileClicked(view: View) {
+        // Получаем NavController из фрагмента
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
+        // Используем NavController для перехода на фрагмент профиля
+        navController.navigate(R.id.profile_menu)
+    }
+
 }
