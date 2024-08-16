@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="title_home">дом</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_menu">меню</string>
+    <string name="title_chat">чат</string>
+    <string name="title_basket">корзина</string>
+</resources>
