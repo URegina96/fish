@@ -4,17 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.ImageHome.ImageAdapter
+import com.example.myapplication.Product.Product
+import com.example.myapplication.Product.ProductAdapter
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -22,16 +25,56 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        // Инициализация RecyclerView для изображений с горизонтальной ориентацией
+        val imageRecyclerView: RecyclerView = binding.imageRecyclerView
+        imageRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        // Пример данных для изображений
+        val imageList = listOf(
+            R.drawable.image1,
+            R.drawable.image2,
+            R.drawable.image1,
+            R.drawable.image2,            R.drawable.image1,
+            R.drawable.image2,
+            R.drawable.image1,
+            R.drawable.image2,            R.drawable.image1,
+            R.drawable.image2,
+            R.drawable.image1,
+            R.drawable.image2,            R.drawable.image1,
+            R.drawable.image2,
+            R.drawable.image1,
+            R.drawable.image2,            R.drawable.image1,
+            R.drawable.image2,
+            R.drawable.image1,
+            R.drawable.image2,
+            // и так далее...
+        )
+
+        imageRecyclerView.adapter = ImageAdapter(imageList)
+
+        // Настройка RecyclerView для отображения продуктов в 2 колонки
+        val productRecyclerView: RecyclerView = binding.recyclerView
+        productRecyclerView.layoutManager = GridLayoutManager(context, 2)
+
+        // Пример данных для продуктов
+        val productList = listOf(
+            Product("Product 1", "$10.00", R.drawable.image1),
+            Product("Product 2", "$20.00", R.drawable.image2),            Product("Product 1", "$10.00", R.drawable.image1),
+            Product("Product 2", "$20.00", R.drawable.image2),            Product("Product 1", "$10.00", R.drawable.image1),
+            Product("Product 2", "$20.00", R.drawable.image2),            Product("Product 1", "$10.00", R.drawable.image1),
+            Product("Product 2", "$20.00", R.drawable.image2),            Product("Product 1", "$10.00", R.drawable.image1),
+            Product("Product 2", "$20.00", R.drawable.image2),            Product("Product 1", "$10.00", R.drawable.image1),
+            Product("Product 2", "$20.00", R.drawable.image2),
+            // и так далее...
+        )
+
+        productRecyclerView.adapter = ProductAdapter(productList)
+
         return root
     }
 
