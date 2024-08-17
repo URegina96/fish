@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
+import com.example.myapplication.ui.cart.CartViewModel
 
 class ProductDetailFragment : Fragment() {
 
@@ -30,7 +33,7 @@ class ProductDetailFragment : Fragment() {
         product?.let {
             imageView.setImageResource(it.imageResId)
             textViewName.text = it.name
-            textViewPrice.text = it.price
+            textViewPrice.text = it.price.toString()
         }
 
         // Устанавливаем обработчик для кнопки возврата
@@ -38,6 +41,15 @@ class ProductDetailFragment : Fragment() {
         buttonBack.setOnClickListener {
             // Используем findNavController для возврата к фрагменту Home
             requireActivity().onBackPressed()
+        }
+        val cartViewModel = ViewModelProvider(requireActivity()).get(CartViewModel::class.java)
+
+        val buttonAddToCart: Button = view.findViewById(R.id.buttonAddToCart)
+        buttonAddToCart.setOnClickListener {
+            product?.let {
+                cartViewModel.addToCart(it)
+                Toast.makeText(requireContext(), "${it.name} добавлен в корзину", Toast.LENGTH_SHORT).show()
+            }
         }
 
         return view

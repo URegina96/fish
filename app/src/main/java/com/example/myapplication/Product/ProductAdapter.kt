@@ -6,12 +6,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.ui.cart.CartViewModel
 
 class ProductAdapter(
     private val productList: List<Product>,
-    private val onItemClick: (Product) -> Unit
+    private val onItemClick: (Product) -> Unit,
+    private val cartViewModel: CartViewModel // Обновленный конструктор
 ) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,17 +34,22 @@ class ProductAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_product, parent, false)
-        return ViewHolder(view)
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = productList[position]
         holder.imageView.setImageResource(product.imageResId)
         holder.textViewName.text = product.name
-        holder.textViewPrice.text = product.price
+        holder.textViewPrice.text = product.price.toString()
+
+        holder.buttonAddToCart.setOnClickListener {
+            cartViewModel.addToCart(product)
+            Toast.makeText(holder.itemView.context, "${product.name} добавлен в корзину", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_product, parent, false)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
