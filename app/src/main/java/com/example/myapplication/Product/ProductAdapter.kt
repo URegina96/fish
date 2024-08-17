@@ -9,8 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 
-class ProductAdapter(private val productList: List<Product>) :
-    RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class ProductAdapter(
+    private val productList: List<Product>,
+    private val onItemClick: (Product) -> Unit
+) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
@@ -19,11 +21,11 @@ class ProductAdapter(private val productList: List<Product>) :
         val buttonAddToCart: Button = itemView.findViewById(R.id.buttonAddToCart)
 
         init {
-            buttonAddToCart.setOnClickListener {
-                // Обработчик клика по кнопке
+            itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    // Действия по добавлению товара в корзину
+                    val product = productList[position]
+                    onItemClick(product)
                 }
             }
         }

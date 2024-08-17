@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -73,7 +74,15 @@ class HomeFragment : Fragment() {
             // и так далее...
         )
 
-        productRecyclerView.adapter = ProductAdapter(productList)
+        // Обработчик нажатия на элемент
+        val onItemClick: (Product) -> Unit = { product ->
+            val bundle = Bundle().apply {
+                putParcelable("product", product)
+            }
+            findNavController().navigate(R.id.fragment_product_detail, bundle)
+        }
+
+        productRecyclerView.adapter = ProductAdapter(productList, onItemClick)
 
         return root
     }

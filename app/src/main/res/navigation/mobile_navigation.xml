@@ -42,4 +42,9 @@
         android:name="com.example.myapplication.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/fragment_product_detail"
+        android:name="com.example.myapplication.Product.ProductDetailFragment"
+        android:label="Product Detail"
+        tools:layout="@layout/fragment_product_detail" />
 </navigation>
