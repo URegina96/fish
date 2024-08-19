@@ -20,11 +20,8 @@ import com.example.myapplication.databinding.FragmentHomeBinding
 import com.example.myapplication.ui.cart.CartViewModel // Импортируйте ваш CartViewModel
 
 class HomeFragment : Fragment() {
-
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-    // Объявление переменной для CartViewModel
     private lateinit var cartViewModel: CartViewModel
 
     override fun onCreateView(
@@ -32,15 +29,17 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        // Инициализация CartViewModel
-        cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
+        cartViewModel = ViewModelProvider(requireActivity()).get(CartViewModel::class.java) // Инициализация CartViewModel
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Инициализация RecyclerView для изображений с горизонтальной ориентацией
+        setupRecyclerViews()
+        return root
+    }
+
+    private fun setupRecyclerViews() {
+        // Настройка RecyclerView для изображений
         val imageRecyclerView: RecyclerView = binding.imageRecyclerView
         imageRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
@@ -67,11 +66,10 @@ class HomeFragment : Fragment() {
 
         imageRecyclerView.adapter = ImageAdapter(imageList)
 
-        // Настройка RecyclerView для отображения продуктов в 2 колонки
+        // Настройка RecyclerView для продуктов
         val productRecyclerView: RecyclerView = binding.recyclerView
         productRecyclerView.layoutManager = GridLayoutManager(context, 2)
 
-        // Пример данных для продуктов
         val productList = listOf(
             Product("Product 1", 10.00, R.drawable.image1),
             Product("Product 2", 20.00, R.drawable.image2),
@@ -83,19 +81,12 @@ class HomeFragment : Fragment() {
             Product("Product 2", 20.00, R.drawable.image2),
         )
 
-
-        // Обработчик нажатия на элемент
         val onItemClick: (Product) -> Unit = { product ->
-            val bundle = Bundle().apply {
-                putParcelable("product", product)
-            }
+            val bundle = Bundle().apply { putParcelable("product", product) }
             findNavController().navigate(R.id.fragment_product_detail, bundle)
         }
 
-        // Теперь передаем cartViewModel в ProductAdapter
         productRecyclerView.adapter = ProductAdapter(productList, onItemClick, cartViewModel)
-
-        return root
     }
 
     override fun onDestroyView() {
