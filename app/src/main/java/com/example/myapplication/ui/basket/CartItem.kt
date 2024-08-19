@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.dashboard
+package com.example.myapplication.ui.basket
 
 import com.example.myapplication.Product.Product
 
@@ -9,5 +9,16 @@ data class CartItem(
     var quantity: Int
 ) {
     val totalPrice: Double
-        get() = product.price.toDouble() * quantity
+        get() = product.price * quantity
+
+    fun increaseQuantity() {
+        quantity++
+    }
+
+    fun decreaseQuantity() {
+        if (quantity > 1) {
+            quantity--
+        }
+    }
+
 }

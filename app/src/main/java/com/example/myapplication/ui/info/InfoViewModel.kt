@@ -1,10 +1,10 @@
-package com.example.myapplication.ui.menu
+package com.example.myapplication.ui.info
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MenuViewModel : ViewModel() {
+class InfoViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"

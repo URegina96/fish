@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.dashboard
+package com.example.myapplication.ui.basket
 
 import android.view.LayoutInflater
 import android.view.View
@@ -19,13 +19,27 @@ class CartAdapter(
         val imageView: ImageView = itemView.findViewById(R.id.product_image)
         val quantityTextView: TextView = itemView.findViewById(R.id.quantity_text)
         val deleteButton: Button = itemView.findViewById(R.id.delete_button)
+        val increaseButton: Button = itemView.findViewById(R.id.increase_button)
+        val decreaseButton: Button = itemView.findViewById(R.id.decrease_button)
 
         fun bind(cartItem: CartItem) {
             imageView.setImageResource(cartItem.product.imageResId)
             quantityTextView.text = cartItem.quantity.toString()
+
             deleteButton.setOnClickListener { onRemove(cartItem) }
+
+            increaseButton.setOnClickListener {
+                cartItem.increaseQuantity()
+                quantityTextView.text = cartItem.quantity.toString()
+            }
+
+            decreaseButton.setOnClickListener {
+                cartItem.decreaseQuantity()
+                quantityTextView.text = cartItem.quantity.toString()
+            }
         }
     }
+
 
 override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)

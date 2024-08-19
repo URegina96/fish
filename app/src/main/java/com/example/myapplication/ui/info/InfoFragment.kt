@@ -1,15 +1,14 @@
-package com.example.myapplication.ui.menu
+package com.example.myapplication.ui.info
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.FragmentHomeBinding
 
-class MenuFragment : Fragment() {
+class InfoFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -23,7 +22,7 @@ class MenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val homeViewModel =
-            ViewModelProvider(this).get(MenuViewModel::class.java)
+            ViewModelProvider(this).get(InfoViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root

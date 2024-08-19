@@ -14,7 +14,7 @@ import com.example.myapplication.ui.cart.CartViewModel
 class ProductAdapter(
     private val productList: List<Product>,
     private val onItemClick: (Product) -> Unit,
-    private val cartViewModel: CartViewModel // Обновленный конструктор
+    private val cartViewModel: CartViewModel
 ) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,6 +31,12 @@ class ProductAdapter(
                     onItemClick(product)
                 }
             }
+
+            buttonAddToCart.setOnClickListener {
+                val product = productList[adapterPosition]
+                cartViewModel.addToCart(product)
+                Toast.makeText(itemView.context, "${product.name} добавлен в корзину", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -39,16 +45,11 @@ class ProductAdapter(
         holder.imageView.setImageResource(product.imageResId)
         holder.textViewName.text = product.name
         holder.textViewPrice.text = product.price.toString()
-
-        holder.buttonAddToCart.setOnClickListener {
-            cartViewModel.addToCart(product)
-            Toast.makeText(holder.itemView.context, "${product.name} добавлен в корзину", Toast.LENGTH_SHORT).show()
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_product, parent, false)
+            .inflate(R.layout.item_product_detail_fargment_home, parent, false)
         return ViewHolder(view)
     }
 

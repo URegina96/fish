@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_margin="27dp"
-    android:id="@+id/item_product"
+    android:id="@+id/item_product_detail_fargment_home"
     android:padding="8dp">
 
     <ImageView

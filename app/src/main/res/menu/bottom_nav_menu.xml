@@ -12,12 +12,12 @@
         android:title="@string/title_basket" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_chat"
         android:icon="@drawable/ic_chat"
         android:title="@string/title_chat" />
     <item
         android:id="@+id/navigation_menu"
-        android:icon="@drawable/ic_menu"
-        android:title="@string/title_menu" />
+        android:icon="@drawable/ic_info"
+        android:title="@string/title_info" />
 
 </menu>

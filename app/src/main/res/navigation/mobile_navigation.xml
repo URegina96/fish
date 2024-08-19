@@ -11,40 +11,57 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_navigation_dashboard"
-            app:destination="@id/navigation_basket" />
+            android:id="@+id/action_navigation_home_to_user_profile"
+            app:destination="@id/user_profile" />
         <action
-            android:id="@+id/action_navigation_home_to_navigation_menu"
-            app:destination="@id/navigation_menu" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_notifications"
-            app:destination="@id/navigation_notifications" />
+            android:id="@+id/action_navigation_home_to_fragment_product_detail"
+            app:destination="@id/fragment_product_detail" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_basket"
-        android:name="com.example.myapplication.ui.dashboard.CartFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_basket" />
+        android:name="com.example.myapplication.ui.basket.CartFragment"
+        android:label="@string/title_basket"
+        tools:layout="@layout/fragment_basket" >
+        <action
+            android:id="@+id/action_navigation_basket_to_user_profile"
+            app:destination="@id/user_profile" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.myapplication.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_chat"
+        android:name="com.example.myapplication.ui.chat.ChatFragment"
+        android:label="@string/title_chat"
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_navigation_chat_to_user_profile"
+            app:destination="@id/user_profile" />
+    </fragment>
+
     <fragment
-        android:id="@+id/navigation_menu"
-        android:name="com.example.myapplication.ui.menu.MenuFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_menu" />
+        android:id="@+id/navigation_info"
+        android:name="com.example.myapplication.ui.info.InfoFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_navigation_info_to_user_profile"
+            app:destination="@id/user_profile" />
+    </fragment>
+
     <fragment
-        android:id="@+id/profile_menu"
-        android:name="com.example.myapplication.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/user_profile"
+        android:name="com.example.myapplication.ui.profile.UserProfileFragment"
+        android:label="@string/title_user_profile"
+        tools:layout="@layout/fragment_user_profile" />
+
     <fragment
         android:id="@+id/fragment_product_detail"
         android:name="com.example.myapplication.Product.ProductDetailFragment"
         android:label="Product Detail"
-        tools:layout="@layout/fragment_product_detail" />
+        tools:layout="@layout/fragment_product_detail" >
+        <action
+            android:id="@+id/action_fragment_product_detail_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
 </navigation>

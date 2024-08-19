@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.Product.Product
-import com.example.myapplication.ui.dashboard.CartItem
+import com.example.myapplication.ui.basket.CartItem
 
 //  новый ViewModel для управления состоянием корзины и общей суммы.
 class CartViewModel : ViewModel() {
@@ -22,15 +22,25 @@ class CartViewModel : ViewModel() {
             currentItems.add(CartItem(product, 1))
         }
 
-        _cartItems.value = currentItems
+        _cartItems.value = currentItems // Убедитесь, что вы обновляете значение LiveData
     }
 
     fun removeFromCart(product: Product) {
         val currentItems = _cartItems.value?.filter { it.product.name != product.name }
-        _cartItems.value = currentItems?.toMutableList()
+        _cartItems.value = currentItems?.toMutableList() // Обновите состояние LiveData
     }
 
     fun getTotalPrice(): Double {
         return _cartItems.value?.sumOf { it.totalPrice } ?: 0.0
     }
+    fun increaseQuantity(cartItem: CartItem) {
+        cartItem.increaseQuantity()
+        _cartItems.value = _cartItems.value  // Обновляем состояние LiveData
+    }
+
+    fun decreaseQuantity(cartItem: CartItem) {
+        cartItem.decreaseQuantity()
+        _cartItems.value = _cartItems.value  // Обновляем состояние LiveData
+    }
+
 }
