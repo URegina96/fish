@@ -10,11 +10,11 @@ import com.example.myapplication.R
 class ImageAdapter(private val images: List<Int>) : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.imageView)
+        val imageView: ImageView = itemView.findViewById(R.id.imageView_item_product_detail_fragment_home)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_image_home, parent, false)
         return ImageViewHolder(view)
     }
 

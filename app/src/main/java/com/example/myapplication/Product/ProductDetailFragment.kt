@@ -24,7 +24,7 @@ class ProductDetailFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_product_detail, container, false)
 
-        imageView = view.findViewById(R.id.imageView)
+        imageView = view.findViewById(R.id.imageView_item_product_detail_fragment_home)
         textViewName = view.findViewById(R.id.textViewName)
         textViewPrice = view.findViewById(R.id.textViewPrice)
 
