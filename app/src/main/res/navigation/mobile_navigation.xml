@@ -46,6 +46,14 @@
         <action
             android:id="@+id/action_navigation_info_to_user_profile"
             app:destination="@id/user_profile" />
+        <action
+            android:id="@+id/action_navigation_info_to_info_detail_fragment"
+            app:destination="@id/info_detail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/info_detail_fragment"
+        android:name="com.example.myapplication.ui.info.DetailInfoFragment"
+        android:label="@string/title_info">
     </fragment>
 
     <fragment
