@@ -9,12 +9,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.ui.cart.CartViewModel
+import com.example.myapplication.ui.cart.BasketViewModel
 
 class ProductAdapter(
     private val productList: List<Product>,
     private val onItemClick: (Product) -> Unit,
-    private val cartViewModel: CartViewModel
+    private val basketViewModel: BasketViewModel
 ) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,7 +34,7 @@ class ProductAdapter(
 
             buttonAddToCart.setOnClickListener {
                 val product = productList[adapterPosition]
-                cartViewModel.addToCart(product)
+                basketViewModel.addToCart(product)
                 Toast.makeText(itemView.context, "${product.name} добавлен в корзину", Toast.LENGTH_SHORT).show()
             }
         }

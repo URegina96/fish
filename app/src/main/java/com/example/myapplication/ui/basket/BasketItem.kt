@@ -4,7 +4,7 @@ import com.example.myapplication.Product.Product
 
 // новый data class для представления товаров в корзине.
 // Этот класс будет содержать информацию о продукте, количестве и стоимости.
-data class CartItem(
+data class BasketItem(
     val product: Product,
     var quantity: Int
 ) {

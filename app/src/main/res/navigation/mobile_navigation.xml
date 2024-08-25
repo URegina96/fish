@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/navigation_basket"
-        android:name="com.example.myapplication.ui.basket.CartFragment"
+        android:name="com.example.myapplication.ui.basket.BasketFragment"
         android:label="@string/title_basket"
         tools:layout="@layout/fragment_basket" >
         <action

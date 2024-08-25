@@ -8,14 +8,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.ui.cart.CartViewModel
+import com.example.myapplication.ui.cart.BasketViewModel
 
 // Адаптер для управления отображением товаров в корзине.
-class CartAdapter(
-    private val cartItems: List<CartItem>, // Список товаров в корзине
-    private val onRemove: (CartItem) -> Unit, // Обработчик для удаления товара
-    private val cartViewModel: CartViewModel // ViewModel для работы с корзиной
-) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
+class BasketAdapter(
+    private val basketItems: List<BasketItem>, // Список товаров в корзине
+    private val onRemove: (BasketItem) -> Unit, // Обработчик для удаления товара
+    private val basketViewModel: BasketViewModel // ViewModel для работы с корзиной
+) : RecyclerView.Adapter<BasketAdapter.ViewHolder>() {
 
     // Внутренний класс для хранения представления элемента списка
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -26,22 +26,22 @@ class CartAdapter(
         val decreaseButton: Button = itemView.findViewById(R.id.decrease_button) // Кнопка для уменьшения количества товара
 
         // Метод для привязки данных к элементу списка
-        fun bind(cartItem: CartItem) {
-            imageView.setImageResource(cartItem.product.imageResId) // Устанавливаем изображение
-            quantityTextView.text = cartItem.quantity.toString() // Устанавливаем количество
+        fun bind(basketItem: BasketItem) {
+            imageView.setImageResource(basketItem.product.imageResId) // Устанавливаем изображение
+            quantityTextView.text = basketItem.quantity.toString() // Устанавливаем количество
 
             // Обработчик клика для кнопки удаления товара
-            deleteButton.setOnClickListener { onRemove(cartItem) }
+            deleteButton.setOnClickListener { onRemove(basketItem) }
 
             // Обработчик клика для кнопки увеличения количества
             increaseButton.setOnClickListener {
-                cartViewModel.increaseQuantity(cartItem) // Увеличиваем количество в ViewModel
+                basketViewModel.increaseQuantity(basketItem) // Увеличиваем количество в ViewModel
                 notifyItemChanged(adapterPosition) // Обновляем текущий элемент
             }
 
             // Обработчик клика для кнопки уменьшения количества
             decreaseButton.setOnClickListener {
-                cartViewModel.decreaseQuantity(cartItem) // Уменьшаем количество в ViewModel
+                basketViewModel.decreaseQuantity(basketItem) // Уменьшаем количество в ViewModel
                 notifyItemChanged(adapterPosition) // Обновляем текущий элемент
             }
         }
@@ -51,15 +51,15 @@ class CartAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Используем разметку item_cart
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_cart, parent, false)
+            .inflate(R.layout.item_basket, parent, false)
         return ViewHolder(view)
     }
 
     // Привязка данных к ViewHolder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(cartItems[position]) // Передача элемента корзины в ViewHolder
+        holder.bind(basketItems[position]) // Передача элемента корзины в ViewHolder
     }
 
     // Возвращаем общее количество товаров в корзине
-    override fun getItemCount(): Int = cartItems.size
+    override fun getItemCount(): Int = basketItems.size
 }

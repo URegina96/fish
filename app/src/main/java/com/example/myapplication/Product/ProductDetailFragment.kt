@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
-import com.example.myapplication.ui.cart.CartViewModel
+import com.example.myapplication.ui.cart.BasketViewModel
 
 class ProductDetailFragment : Fragment() {
 
@@ -42,12 +42,12 @@ class ProductDetailFragment : Fragment() {
             // Используем findNavController для возврата к фрагменту Home
             requireActivity().onBackPressed()
         }
-        val cartViewModel = ViewModelProvider(requireActivity()).get(CartViewModel::class.java)
+        val basketViewModel = ViewModelProvider(requireActivity()).get(BasketViewModel::class.java)
 
         val buttonAddToCart: Button = view.findViewById(R.id.buttonAddToCart)
         buttonAddToCart.setOnClickListener {
             product?.let {
-                cartViewModel.addToCart(it)
+                basketViewModel.addToCart(it)
                 Toast.makeText(requireContext(), "${it.name} добавлен в корзину", Toast.LENGTH_SHORT).show()
             }
         }
