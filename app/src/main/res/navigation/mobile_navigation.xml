@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_navigation_basket_to_user_profile"
             app:destination="@id/user_profile" />
+        <action
+            android:id="@+id/action_navigation_basket_to_fragment_order_address"
+            app:destination="@id/fragment_order_address" />
     </fragment>
 
     <fragment
@@ -53,6 +56,7 @@
     <fragment
         android:id="@+id/info_detail_fragment"
         android:name="com.example.myapplication.ui.info.DetailInfoFragment"
+        tools:layout="@layout/fragment_detail_info"
         android:label="@string/title_info">
     </fragment>
 
@@ -67,9 +71,31 @@
         android:name="com.example.myapplication.Product.ProductDetailFragment"
         android:label="Product Detail"
         tools:layout="@layout/fragment_product_detail" >
-        <action
-            android:id="@+id/action_fragment_product_detail_to_navigation_home"
-            app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/fragment_order_address"
+        android:name="com.example.myapplication.ui.basket.order.OrderAddressFragment"
+        tools:layout="@layout/fragment_order_address"
+        android:label="заказ адреса">
+        <action
+            android:id="@+id/action_fragment_order_address_to_fragmen_contact_number"
+            app:destination="@id/fragmen_contact_number" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmen_contact_number"
+        android:name="com.example.myapplication.ui.basket.order.ContactNumberFragment"
+        tools:layout="@layout/fragment_contact_number"
+        android:label="заказ номер" >
+
+        <action
+            android:id="@+id/action_fragmen_contact_number_to_fragment_order_complete"
+            app:destination="@id/fragment_order_complete" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_order_complete"
+        android:name="com.example.myapplication.ui.basket.order.OrderCompleteFragment"
+        tools:layout="@layout/fragment_order_complete"
+        android:label="после заказа" />
 
 </navigation>

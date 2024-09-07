@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -38,7 +39,14 @@ class BasketFragment : Fragment() {
 
         // Обработчик нажатия на кнопку
         checkoutButton.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_basket_to_fragment_order_address)
+            // Проверка на наличие товаров в корзине
+            if (basketViewModel.basketItems.value.isNullOrEmpty()) {
+                // Если корзина пуста, показываем сообщение
+                Toast.makeText(context, "Ваша корзина пуста. Пожалуйста, добавьте товары.", Toast.LENGTH_SHORT).show()
+            } else {
+                // Если корзина не пуста, переходим к следующему фрагменту
+                findNavController().navigate(R.id.action_navigation_basket_to_fragment_order_address)
+            }
         }
 
         return view // Возвращаем созданное представление
