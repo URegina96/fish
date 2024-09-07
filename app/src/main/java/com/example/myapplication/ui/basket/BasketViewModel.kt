@@ -14,7 +14,7 @@ class BasketViewModel : ViewModel() {
     val basketItems: LiveData<MutableList<BasketItem>> = _basketItems // Доступ к корзине
 
     // Метод для добавления товара в корзину
-    fun addToCart(product: Product) {
+    fun addToBasket(product: Product) {
         val currentItems = _basketItems.value ?: mutableListOf()
         // Проверка, существует ли продукт в корзине
         val existingItem = currentItems.find { it.product.name == product.name }

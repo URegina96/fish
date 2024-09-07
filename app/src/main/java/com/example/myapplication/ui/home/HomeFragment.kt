@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController // Импортируем 
 import androidx.recyclerview.widget.GridLayoutManager // Импортируем менеджер макета для сеточного представления
 import androidx.recyclerview.widget.LinearLayoutManager // Импортируем менеджер макета для линейного представления
 import androidx.recyclerview.widget.RecyclerView // Импортируем компонент для представления списка
-import com.example.myapplication.ImageHome.ImageAdapter // Импортируем адаптер для изображений
 import com.example.myapplication.Product.Product // Импортируем класс продукта
 import com.example.myapplication.Product.ProductAdapter // Импортируем адаптер для продуктов
 import com.example.myapplication.R // Импортируем ресурсный файл
@@ -28,7 +27,7 @@ class HomeFragment : Fragment() { // Класс HomeFragment, наследующ
         container: ViewGroup?, // Параметр для группировки представлений
         savedInstanceState: Bundle? // Параметр для передачи данных при пересоздании
     ): View {
-        basketViewModel = ViewModelProvider(requireActivity()).get(BasketViewModel::class.java) // Получаем экземпляр CartViewModel
+        basketViewModel = ViewModelProvider(requireActivity()).get(BasketViewModel::class.java) // Получаем экземпляр BasketViewModel
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false) // Инициализируем привязку представления
         val root: View = binding.root // Получаем корневое представление
@@ -60,6 +59,7 @@ class HomeFragment : Fragment() { // Класс HomeFragment, наследующ
         val productList = listOf( // Создаем список продуктов
             Product("Product 1", 10.00, R.drawable.image1), // Добавляем продукты с названием, ценой и изображением
             Product("Product 2", 20.00, R.drawable.image2),
+            Product("Product 2", 20.00, R.drawable.image2),Product("Product 2", 20.00, R.drawable.image2),Product("Product 2", 20.00, R.drawable.image2),Product("Product 2", 20.00, R.drawable.image2),Product("Product 2", 20.00, R.drawable.image2),Product("Product 2", 20.00, R.drawable.image2),Product("Product 2", 20.00, R.drawable.image2),Product("Product 2", 20.00, R.drawable.image2),Product("Product 2", 20.00, R.drawable.image2),Product("Product 2", 20.00, R.drawable.image2),Product("Product 2", 20.00, R.drawable.image2),
         )
 
         // Лямбда-функция, вызываемая при нажатии на продукт

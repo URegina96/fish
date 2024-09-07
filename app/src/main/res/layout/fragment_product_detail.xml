@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_product_detail"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,8 +10,8 @@
 
     <ImageView
         android:id="@+id/imageView_item_product_detail_fragment_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="287dp"
+        android:layout_height="298dp"
         android:adjustViewBounds="true"
         android:background="@android:color/white"
         android:contentDescription="@string/product_image"
@@ -21,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/textViewName_product_detail_fragment_home"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -33,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@id/imageView_item_product_detail_fragment_home" />
 
     <TextView
-        android:id="@+id/textViewPrice"
+        android:id="@+id/textViewPrice_product_detail_fragment_home"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -41,10 +42,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewName" />
+        app:layout_constraintTop_toBottomOf="@id/textViewName_product_detail_fragment_home" />
 
     <Button
-        android:id="@+id/buttonAddToCart"
+        android:id="@+id/buttonAddToBasket_product_detail_fragment_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -55,10 +56,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewPrice" />
+        app:layout_constraintTop_toBottomOf="@id/textViewPrice_product_detail_fragment_home" />
 
     <Button
-        android:id="@+id/buttonBack"
+        android:id="@+id/buttonBack_product_detail_fragment_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -69,6 +70,6 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonAddToCart" />
+        app:layout_constraintTop_toBottomOf="@id/buttonAddToBasket_product_detail_fragment_home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

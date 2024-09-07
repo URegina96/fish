@@ -1,4 +1,4 @@
-package com.example.myapplication.ImageHome // Определяем пакет, в котором находится данный класс
+package com.example.myapplication.ui.home // Определяем пакет, в котором находится данный класс
 
 import android.view.LayoutInflater // Импортируем класс для создания представлений
 import android.view.View // Импортируем класс для работы с представлениями
@@ -13,7 +13,7 @@ class ImageAdapter(private val images: List<Int>) : RecyclerView.Adapter<ImageAd
     // Вложенный класс ViewHolder для управления элементами списка
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // Инициализация ImageView, на который будут загружаться изображения
-        val imageView: ImageView = itemView.findViewById(R.id.imageView_item_product_detail_fragment_home)
+        val imageView: ImageView = itemView.findViewById(R.id.item_image_home_imageView)
     }
 
     // Метод, который создает новый ViewHolder при необходимости

@@ -7,9 +7,9 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imageView_item_product_detail_fragment_home"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"/>
+        android:id="@+id/item_image_home_imageView"
+        android:layout_width="101dp"
+        android:layout_height="108dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter" />
 </LinearLayout>
