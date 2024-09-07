@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_user_profile"
-            app:destination="@id/user_profile" />
+            app:destination="@id/user_profile_fragment" />
         <action
             android:id="@+id/action_navigation_home_to_fragment_product_detail"
             app:destination="@id/fragment_product_detail" />
@@ -25,7 +25,7 @@
         tools:layout="@layout/fragment_basket" >
         <action
             android:id="@+id/action_navigation_basket_to_user_profile"
-            app:destination="@id/user_profile" />
+            app:destination="@id/user_profile_fragment" />
         <action
             android:id="@+id/action_navigation_basket_to_fragment_order_address"
             app:destination="@id/fragment_order_address" />
@@ -38,7 +38,7 @@
         tools:layout="@layout/fragment_chat" >
         <action
             android:id="@+id/action_navigation_chat_to_user_profile"
-            app:destination="@id/user_profile" />
+            app:destination="@id/user_profile_fragment" />
     </fragment>
 
     <fragment
@@ -48,7 +48,7 @@
         tools:layout="@layout/fragment_info" >
         <action
             android:id="@+id/action_navigation_info_to_user_profile"
-            app:destination="@id/user_profile" />
+            app:destination="@id/user_profile_fragment" />
         <action
             android:id="@+id/action_navigation_info_to_info_detail_fragment"
             app:destination="@id/info_detail_fragment" />
@@ -61,7 +61,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/user_profile"
+        android:id="@+id/user_profile_fragment"
         android:name="com.example.myapplication.ui.profile.UserProfileFragment"
         android:label="@string/title_user_profile"
         tools:layout="@layout/fragment_user_profile" />
@@ -99,3 +99,12 @@
         android:label="после заказа" />
 
 </navigation>
+
+
+
+
+
+
+
+
+                                             

@@ -59,6 +59,6 @@ class MainActivity : AppCompatActivity() { // Класс MainActivity, насл�
         val navController = findNavController(R.id.nav_host_fragment_activity_main) // Получаем NavController
 
         // Используем NavController для перехода на фрагмент профиля
-        navController.navigate(R.id.user_profile) // Переход к фрагменту профиля пользователя
+        navController.navigate(R.id.user_profile_fragment) // Переход к фрагменту профиля пользователя
     }
 }

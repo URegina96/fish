@@ -1,21 +1,185 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_profile_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:text="@string/title_user_profile"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/personal_info_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Личная информация"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/full_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ФИО: Иванов Иван Иванович"
+            app:layout_constraintTop_toBottomOf="@id/personal_info_header"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Email: example@mail.com"
+            app:layout_constraintTop_toBottomOf="@id/full_name"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Телефон: +7 123 456 7890"
+            app:layout_constraintTop_toBottomOf="@id/email"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/birthdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Дата рождения: 01.01.2000"
+            app:layout_constraintTop_toBottomOf="@id/phone"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Пол: Мужской"
+            app:layout_constraintTop_toBottomOf="@id/birthdate"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/edit_personal_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Изменить личную информацию"
+            app:layout_constraintTop_toBottomOf="@id/gender"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Адреса доставки -->
+        <TextView
+            android:id="@+id/delivery_addresses_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Адреса доставки"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/edit_personal_info"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/delivery_addresses"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/delivery_addresses_header" />
+
+        <Button
+            android:id="@+id/add_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Добавить адрес"
+            app:layout_constraintTop_toBottomOf="@id/delivery_addresses"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Заказы -->
+        <TextView
+            android:id="@+id/orders_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Заказы"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/add_address"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/order_history"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/orders_header" />
+
+        <Button
+            android:id="@+id/repeat_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Повторить заказ"
+            app:layout_constraintTop_toBottomOf="@id/order_history"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Оплата и счета -->
+        <TextView
+            android:id="@+id/payment_info_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Оплата и счета"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/repeat_order"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/payment_methods"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Способы оплаты: Картой, Наличные"
+            app:layout_constraintTop_toBottomOf="@id/payment_info_header"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/payment_history"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="История платежей"
+            app:layout_constraintTop_toBottomOf="@id/payment_methods"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Безопасность -->
+        <TextView
+            android:id="@+id/security_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Безопасность"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/payment_history"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/change_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Изменить пароль"
+            app:layout_constraintTop_toBottomOf="@id/security_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Выйти из аккаунта"
+            app:layout_constraintTop_toBottomOf="@id/change_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

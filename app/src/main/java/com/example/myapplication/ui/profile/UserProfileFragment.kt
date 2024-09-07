@@ -14,7 +14,6 @@ class UserProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Замените `R.layout.fragment_profile` на ваш layout для профиля
         return inflater.inflate(R.layout.fragment_user_profile, container, false)
     }
 }
