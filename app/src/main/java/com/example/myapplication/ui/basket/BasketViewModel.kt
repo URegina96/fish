@@ -29,7 +29,7 @@ class BasketViewModel : ViewModel() {
     }
 
     // Метод для удаления товара из корзины
-    fun removeFromCart(product: Product) {
+    fun removeFromBasket(product: Product) {
         // Фильтрация списка товаров
         val currentItems = _basketItems.value?.filter { it.product.name != product.name }
         _basketItems.value = currentItems?.toMutableList() // Обновление состояния LiveData

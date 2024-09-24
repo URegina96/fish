@@ -12,8 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.ui.basket.BasketAdapter
-import com.example.myapplication.ui.basket.BasketItem
 import com.example.myapplication.ui.cart.BasketViewModel
 
 // Фрагмент для отображения содержимого корзины
@@ -25,15 +23,15 @@ class BasketFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_basket, container, false)
-        // Инициализация CartViewModel
+        // Инициализация BasketViewModel
         basketViewModel = ViewModelProvider(requireActivity()).get(BasketViewModel::class.java)
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.cart_recyclerview)
+        val recyclerView: RecyclerView = view.findViewById(R.id.basket_recyclerview)
         val totalTextView: TextView = view.findViewById(R.id.total_text)
         val checkoutButton: Button = view.findViewById(R.id.checkout_button)
 
-        basketViewModel.basketItems.observe(viewLifecycleOwner) { cartItems ->
-            recyclerView.adapter = BasketAdapter(cartItems, ::onRemoveFromCart, basketViewModel)
+        basketViewModel.basketItems.observe(viewLifecycleOwner) { basketItems ->
+            recyclerView.adapter = BasketAdapter(basketItems, ::onRemoveFromBasket, basketViewModel)
             totalTextView.text = "Итого: ${basketViewModel.getTotalPrice()} руб."
         }
 
@@ -53,7 +51,7 @@ class BasketFragment : Fragment() {
     }
 
     // Метод для удаления товара из корзины
-    private fun onRemoveFromCart(basketItem: BasketItem) {
-        basketViewModel.removeFromCart(basketItem.product) // Удаление товара
+    private fun onRemoveFromBasket(basketItem: BasketItem) {
+        basketViewModel.removeFromBasket(basketItem.product) // Удаление товара
     }
 }

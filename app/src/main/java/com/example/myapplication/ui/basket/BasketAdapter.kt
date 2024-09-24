@@ -49,7 +49,7 @@ class BasketAdapter(
 
     // Создание нового ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        // Используем разметку item_cart
+        // Используем разметку item_basket
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_basket, parent, false)
         return ViewHolder(view)
