@@ -40,13 +40,13 @@ class BasketViewModel : ViewModel() {
         return _basketItems.value?.sumOf { it.totalPrice } ?: 0.0 // Подсчет общей стоимости
     }
 
-    // Метод для увеличения количества в CartItem
+    // Метод для увеличения количества в BasketItem
     fun increaseQuantity(basketItem: BasketItem) {
         basketItem.increaseQuantity() // Увеличиваем количество
         _basketItems.value = _basketItems.value // Обновляем состояние LiveData
     }
 
-    // Метод для уменьшения количества в CartItem
+    // Метод для уменьшения количества в BasketItem
     fun decreaseQuantity(basketItem: BasketItem) {
         basketItem.decreaseQuantity() // Уменьшаем количество
         _basketItems.value = _basketItems.value // Обновляем состояние LiveData

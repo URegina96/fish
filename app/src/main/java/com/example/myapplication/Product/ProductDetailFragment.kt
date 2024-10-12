@@ -53,8 +53,8 @@ class ProductDetailFragment : Fragment() {
         val basketViewModel = ViewModelProvider(requireActivity()).get(BasketViewModel::class.java)
 
         // Находим кнопку "Добавить в корзину" и устанавливаем обработчик клика
-        val buttonAddToCart: Button = view.findViewById(R.id.buttonAddToBasket_product_detail_fragment_home)
-        buttonAddToCart.setOnClickListener {
+        val buttonAddToBasket: Button = view.findViewById(R.id.buttonAddToBasket_product_detail_fragment_home)
+        buttonAddToBasket.setOnClickListener {
             // Если продукт существует, добавляем его в корзину и показываем уведомление
             product?.let {
                 basketViewModel.addToBasket(it) // Добавляем продукт в корзину
